@@ -166,16 +166,16 @@ angular.module('ng-token-auth', ['ipCookie']).provider('$auth', function() {
                 return $rootScope.$broadcast('auth:registration-email-error', resp);
               });
             },
-            submitLogin: function(params, opts) {
+            submitLogin: function(params, opts, config) {
               if (opts == null) {
                 opts = {};
               }
               this.initDfd();
-              $http.post(this.apiUrl(opts.config) + this.getConfig(opts.config).emailSignInPath, params).success((function(_this) {
-                return function(resp) {
+              $http.post(this.apiUrl(opts.config) + this.getConfig(opts.config).emailSignInPath, params, config).success((function(_this) {
+                return function(resp, status, headers) {
                   var authData;
                   _this.setConfigName(opts.config);
-                  authData = _this.getConfig(opts.config).handleLoginResponse(resp, _this);
+                  authData = _this.getConfig(opts.config).handleLoginResponse(resp, status, headers, _this);
                   _this.handleValidAuth(authData);
                   return $rootScope.$broadcast('auth:login-success', _this.user);
                 };

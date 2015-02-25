@@ -186,12 +186,12 @@ angular.module('ng-token-auth', ['ipCookie'])
 
 
           # capture input from user, authenticate serverside
-          submitLogin: (params, opts={}) ->
+          submitLogin: (params, opts={} , config) ->
             @initDfd()
-            $http.post(@apiUrl(opts.config) + @getConfig(opts.config).emailSignInPath, params)
-              .success((resp) =>
+            $http.post(@apiUrl(opts.config) + @getConfig(opts.config).emailSignInPath, params, config)
+              .success((resp,status,headers) =>
                 @setConfigName(opts.config)
-                authData = @getConfig(opts.config).handleLoginResponse(resp, @)
+                authData = @getConfig(opts.config).handleLoginResponse(resp,status,headers, @)
                 @handleValidAuth(authData)
                 $rootScope.$broadcast('auth:login-success', @user)
               )

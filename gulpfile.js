@@ -435,7 +435,7 @@ gulp.task('build-dev', function(cb) {
     'clean',
     //'sprites',
     'images',
-    'sass',
+    //'sass',
     'transpile',
     'js-tmpl',
     'base-tmpl',
@@ -454,8 +454,8 @@ gulp.task('reload-js-tmpl', function(cb) {
 gulp.task('build-prod', function(cb) {
   seq(
     'build-dev',
-    'useref',
-    'replace',
+    //'useref',
+    //'replace',
     //'cdnize',
     //'s3',
     cb
