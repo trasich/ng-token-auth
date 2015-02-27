@@ -648,7 +648,7 @@ angular.module('ng-token-auth', ['ipCookie']).provider('$auth', function() {
       if ((_base = $httpProvider.defaults.headers)[method] == null) {
         _base[method] = {};
       }
-      return $httpProvider.defaults.headers[method]['If-Modified-Since'] = '0';
+      return $httpProvider.defaults.headers[method]['If-Modified-Since'] = 'Sun, 06 Nov 1994 00:00:00 GMT';
     });
   }
 ]).run([
