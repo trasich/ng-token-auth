@@ -645,10 +645,7 @@ angular.module('ng-token-auth', ['ipCookie']).provider('$auth', function() {
     httpMethods = ['get', 'post', 'put', 'patch', 'delete'];
     return angular.forEach(httpMethods, function(method) {
       var _base;
-      if ((_base = $httpProvider.defaults.headers)[method] == null) {
-        _base[method] = {};
-      }
-      return $httpProvider.defaults.headers[method]['If-Modified-Since'] = 'Sun, 06 Nov 1994 00:00:00 GMT';
+      return (_base = $httpProvider.defaults.headers)[method] != null ? _base[method] : _base[method] = {};
     });
   }
 ]).run([
